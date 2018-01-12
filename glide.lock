@@ -1,12 +1,8 @@
-hash: d56626d79b916f76a7697eb930a0c178e140deaa240815f25779560f88dc4dec
-updated: 2018-01-12T21:35:30.170479+01:00
+hash: d4f3e95122e44bae7adc983c08a1abb2af80201526fe2c8a62d5c42643e8e302
+updated: 2018-01-12T22:11:52.497346+01:00
 imports:
-- name: github.com/armon/go-radix
-  version: 1fca145dffbcaa8fe914309b1ec0cfc67500fe61
-- name: github.com/mitchellh/hashstructure
-  version: 2bca23e0e452137f789efbc8610126fd8b94f73b
 - name: github.com/pkg/errors
   version: e881fd58d78e04cf6d0de1217f8707c8cc2249bc
 - name: gopkg.in/tucnak/telebot.v2
-  version: 00cebf376d79ee4363a11cd66fbbdf565452e0ab
+  version: fd49f3f2600037b57ee38200b479796e1c14c590
 testImports: []

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	token, found := os.LookupEnv("TELEGRAM_TOKEN_BUGURTOBOT")
+	token, found := os.LookupEnv("BUGURTOBOT_TOKEN")
 	if !found {
 		fmt.Println("Env variables not found")
 		return
