@@ -24,17 +24,21 @@ func main() {
 	}
 
 	// Username -> Earliest time to pwn.
-	cooldown := map[int]time.Time{}
+	permittedUsers := map[string]time.Time{
+		"yabalaban":  time.Now(),
+		"massaraksh": time.Now(),
+	}
 
 	bot.Handle(tb.OnText, func(m *tb.Message) {
-		lastPwn, found := cooldown[m.Contact.UserID]
+		fmt.Printf("Received a message %s from %s\n", m.Text, m.Sender.Username)
+		lastPwnTime, found := permittedUsers[m.Sender.Username]
 		now := time.Now()
-		if !found || (found && lastPwn.Before(now)) {
+		if !found || (found && lastPwnTime.Before(now)) {
 			fmt.Println("Replying!")
-			cooldown[m.Contact.UserID] = now.Add(90 * time.Second)
+			permittedUsers[m.Sender.Username] = now.Add(95 * time.Second)
 			bot.Reply(m, "-")
 		} else {
-			fmt.Printf("Have to wait %.4f seconds...\n", lastPwn.Sub(now).Seconds())
+			fmt.Printf("Have to wait %.4f seconds...\n", lastPwnTime.Sub(now).Seconds())
 		}
 	})
 
