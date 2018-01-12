@@ -32,13 +32,17 @@ func main() {
 	bot.Handle(tb.OnText, func(m *tb.Message) {
 		fmt.Printf("Received a message %s from %s\n", m.Text, m.Sender.Username)
 		lastPwnTime, found := permittedUsers[m.Sender.Username]
-		now := time.Now()
-		if !found || (found && lastPwnTime.Before(now)) {
-			fmt.Println("Replying!")
-			permittedUsers[m.Sender.Username] = now.Add(95 * time.Second)
-			bot.Reply(m, "-")
+		if found {
+			now := time.Now()
+			if lastPwnTime.Before(now) {
+				fmt.Println("Replying!")
+				permittedUsers[m.Sender.Username] = now.Add(95 * time.Second)
+				bot.Reply(m, "-")
+			} else {
+				fmt.Printf("Have to wait %.4f seconds...\n", lastPwnTime.Sub(now).Seconds())
+			}
 		} else {
-			fmt.Printf("Have to wait %.4f seconds...\n", lastPwnTime.Sub(now).Seconds())
+			fmt.Println("User not found")
 		}
 	})
 
