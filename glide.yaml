@@ -1,0 +1,4 @@
+package: github.com/ZelJin/bugurtobot
+import:
+- package: gopkg.in/tucnak/telebot.v2
+  version: ~1.0.0
