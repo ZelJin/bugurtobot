@@ -15,7 +15,8 @@ func main() {
 		return
 	}
 	bot, err := tb.NewBot(tb.Settings{
-		Token: token,
+		Token:  token,
+		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
 	})
 	if err != nil {
 		fmt.Println(err)
